@@ -72,3 +72,31 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### component part has been done 
 
+### dummy data to add employee sql
+ ### -- Inserting dummy data for 10 employees into the Employee table
+` INSERT INTO employee (first_name, last_name, role, salary, address)
+VALUES
+('John', 'Doe', 'Manager', 50000, '123 Main St, Anytown'),
+('Jane', 'Smith', 'Developer', 60000, '456 Elm St, Othertown'),
+('Michael', 'Johnson', 'Sales Representative', 45000, '789 Oak St, Anycity'),
+('Emily', 'Brown', 'HR Specialist', 55000, '567 Pine St, Otherville'),
+('David', 'Wilson', 'Software Engineer', 70000, '890 Maple St, Somewhere'),
+('Sarah', 'Martinez', 'Accountant', 60000, '234 Birch St, Anywhere'),
+('Daniel', 'Garcia', 'Marketing Manager', 65000, '321 Cedar St, Nowhere'),
+('Jessica', 'Lopez', 'Data Analyst', 60000, '876 Willow St, Someplace'),
+('James', 'Miller', 'Operations Manager', 75000, '543 Spruce St, Elsewhere'),
+('Olivia', 'Gonzalez', 'Customer Support Specialist', 50000, '987 Pineapple St, Anothercity');
+ `
+### working add employee page em data fields 
+` {
+"id": 14,
+"firstName": "Jessicaa sen",
+"lastName": "Lopez",
+"role": "Data Analyst",
+"salary": 70000,
+"address": "876 Willow St, Someplace"
+} `
+### edit page working
+### delete working
+
+### feature release

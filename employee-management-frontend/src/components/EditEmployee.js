@@ -1,16 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import EmployeeService from './EmployeeService';
 
 const EditEmployee = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const [employee, setEmployee] = useState({ name: '', email: '', jobTitle: '' });
+    const [employee, setEmployee] = useState({
+        firstName: '',
+        lastName: '',
+        role: '',
+        salary: '',
+        address: ''
+    });
 
     useEffect(() => {
-        // Fetch the employee data based on the ID
-        // For now, we'll just use dummy data
-        const fetchedEmployee = { name: 'John Doe', email: 'john@example.com', jobTitle: 'Software Engineer' };
-        setEmployee(fetchedEmployee);
+        const fetchEmployee = async () => {
+            try {
+                const response = await EmployeeService.getEmployeeById(id);
+                setEmployee(response.data);
+            } catch (error) {
+                console.error('Error fetching employee:', error);
+            }
+        };
+        fetchEmployee();
     }, [id]);
 
     const handleChange = (e) => {
@@ -21,11 +33,14 @@ const EditEmployee = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Add logic to update the employee
-        console.log({ id, ...employee });
-        navigate('/employees');
+        try {
+            await EmployeeService.updateEmployee(id, employee);
+            navigate('/employees');
+        } catch (error) {
+            console.error('Error updating employee:', error);
+        }
     };
 
     return (
@@ -33,34 +48,56 @@ const EditEmployee = () => {
             <h1>Edit Employee</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label>Employee Name</label>
+                    <label>First Name</label>
                     <input
                         type="text"
-                        name="name"
+                        name="firstName"
                         className="form-control"
-                        value={employee.name}
+                        value={employee.firstName}
                         onChange={handleChange}
                         required
                     />
                 </div>
                 <div className="form-group">
-                    <label>Employee Email</label>
+                    <label>Last Name</label>
                     <input
-                        type="email"
-                        name="email"
+                        type="text"
+                        name="lastName"
                         className="form-control"
-                        value={employee.email}
+                        value={employee.lastName}
                         onChange={handleChange}
                         required
                     />
                 </div>
                 <div className="form-group">
-                    <label>Employee Job Title</label>
+                    <label>Role</label>
                     <input
                         type="text"
-                        name="jobTitle"
+                        name="role"
                         className="form-control"
-                        value={employee.jobTitle}
+                        value={employee.role}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Salary</label>
+                    <input
+                        type="number"
+                        name="salary"
+                        className="form-control"
+                        value={employee.salary}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Address</label>
+                    <input
+                        type="text"
+                        name="address"
+                        className="form-control"
+                        value={employee.address}
                         onChange={handleChange}
                         required
                     />

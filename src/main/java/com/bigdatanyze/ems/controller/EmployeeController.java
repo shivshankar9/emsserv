@@ -41,4 +41,12 @@ public class EmployeeController {
 	public void deleteEmployee(@PathVariable Long id) {
 		employeeService.deleteEmployee(id);
 	}
+
+
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping("/api/data")
+	public String getData() {
+		return "Data from Spring Boot";
+	}
+
 }

@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import EmployeeService from './EmployeeService';
+import ViewProfile from './ViewProfile';
+
+
 
 const EmployeeList = () => {
     const [employees, setEmployees] = useState([]);
@@ -10,12 +14,8 @@ const EmployeeList = () => {
 
     const fetchEmployees = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/employees');
-            if (!response.ok) {
-                throw new Error('Failed to fetch employees');
-            }
-            const data = await response.json();
-            setEmployees(data);
+            const response = await EmployeeService.getEmployees();
+            setEmployees(response.data);
         } catch (error) {
             console.error('Error fetching employees:', error);
         }
@@ -23,12 +23,7 @@ const EmployeeList = () => {
 
     const handleDeleteEmployee = async (id) => {
         try {
-            const response = await fetch(`http://localhost:8080/api/employees/${id}`, {
-                method: 'DELETE',
-            });
-            if (!response.ok) {
-                throw new Error('Failed to delete employee');
-            }
+            await EmployeeService.deleteEmployee(id);
             const updatedEmployees = employees.filter(emp => emp.id !== id);
             setEmployees(updatedEmployees);
         } catch (error) {
@@ -43,19 +38,26 @@ const EmployeeList = () => {
             <table className="table">
                 <thead>
                     <tr>
-                        <th>Employee Name</th>
-                        <th>Employee Email</th>
-                        <th>Employee Job Title</th>
+                        <th>Employee Id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Role</th>
+                        <th>Salary</th>
+                        <th>Address</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {employees.map(employee => (
                         <tr key={employee.id}>
-                            <td>{employee.name}</td>
-                            <td>{employee.email}</td>
-                            <td>{employee.jobTitle}</td>
+                            <td>{employee.id}</td>
+                            <td>{employee.firstName}</td>
+                            <td>{employee.lastName}</td>
+                            <td>{employee.role}</td>
+                            <td>{employee.salary}</td>
+                            <td>{employee.address}</td>
                             <td>
+                                <Link to={`/view-profile/${employee.id}`} className="btn btn-info mr-2">View Profile</Link>
                                 <Link to={`/edit-employee/${employee.id}`} className="btn btn-secondary mr-2">Edit</Link>
                                 <button className="btn btn-danger" onClick={() => handleDeleteEmployee(employee.id)}>Delete</button>
                             </td>
