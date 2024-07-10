@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import EmployeeService from './EmployeeService';
+import './LandingPage.css';
 
 const EditEmployee = () => {
     const { id } = useParams();

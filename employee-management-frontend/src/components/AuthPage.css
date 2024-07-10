@@ -1,0 +1,99 @@
+/* src/components/AuthPage.css */
+.auth-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    text-align: center;
+}
+
+.auth-header {
+    margin-bottom: 20px;
+}
+
+.auth-buttons, .auth-form {
+    margin-bottom: 20px;
+}
+
+.auth-form input {
+    width: 200px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn, .google-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.google-btn {
+    background-color: #db4437;
+}
+
+.btn:hover, .google-btn:hover {
+    background-color: #2980b9;
+}
+
+.google-btn:hover {
+    background-color: #c23321;
+}
+
+.auth-toggle p {
+    cursor: pointer;
+    color: #3498db;
+    transition: color 0.3s;
+}
+
+.auth-toggle p:hover {
+    color: #2980b9;
+}
+
+.animation {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #3498db;
+    animation: moveCircle 5s linear infinite;
+}
+
+.delay {
+    animation-delay: 1s;
+}
+
+.delay-2 {
+    animation-delay: 2s;
+}
+
+@keyframes moveCircle {
+    0% {
+        left: -50px;
+        top: 50%;
+    }
+    50% {
+        left: 50%;
+        top: 0%;
+    }
+    100% {
+        left: 100%;
+        top: 50%;
+    }
+}

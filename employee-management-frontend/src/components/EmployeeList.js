@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import EmployeeService from './EmployeeService';
 import ViewProfile from './ViewProfile';
 
-
-
 const EmployeeList = () => {
     const [employees, setEmployees] = useState([]);
 
@@ -35,8 +33,8 @@ const EmployeeList = () => {
         <div>
             <h1>Employees List</h1>
             <Link to="/add-employee" className="btn btn-primary mb-3">Add Employee</Link>
-            <table className="table">
-                <thead>
+            <table className="table table-bordered">
+                <thead className="thead-dark">
                     <tr>
                         <th>Employee Id</th>
                         <th>First Name</th>
