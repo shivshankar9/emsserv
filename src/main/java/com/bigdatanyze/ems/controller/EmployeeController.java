@@ -1,10 +1,9 @@
-
-
 package com.bigdatanyze.ems.controller;
 
 import com.bigdatanyze.ems.model.Employee;
 import com.bigdatanyze.ems.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,11 +41,27 @@ public class EmployeeController {
 		employeeService.deleteEmployee(id);
 	}
 
-
-	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/api/data")
 	public String getData() {
 		return "Data from Spring Boot";
 	}
 
+	@GetMapping("/admin/employees")
+	@PreAuthorize("hasRole('ADMIN')")
+	public List<Employee> getAllAdminEmployees() {
+		return employeeService.getAllEmployees(); // Example implementation
+	}
+
+	@GetMapping("/manager/employees")
+	@PreAuthorize("hasRole('MANAGER')")
+	public List<Employee> getManagedEmployees() {
+		return employeeService.getAllEmployees(); // Example implementation
+	}
+
+	@GetMapping("/employee/profile")
+	@PreAuthorize("hasRole('EMPLOYEE')")
+	public Employee getEmployeeProfile() {
+		// Implement logic to retrieve current authenticated employee's profile
+		return employeeService.getEmployeeById(1L); // Example implementation
+	}
 }

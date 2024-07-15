@@ -5,8 +5,8 @@ import EmployeeService from './EmployeeService';
 const AddEmployee = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [phoneNo, setphoneNo] = useState('');
-    const [emailId, setemailId] = useState('');
+    const [phoneNo, setPhoneNo] = useState('');
+    const [emailId, setEmailId] = useState('');
     const [role, setRole] = useState('');
     const [salary, setSalary] = useState('');
     const [address, setAddress] = useState('');
@@ -30,8 +30,8 @@ const AddEmployee = () => {
             // Reset form fields after successful submission
             setFirstName('');
             setLastName('');
-            emailId(''),
-            phoneNo(''),
+            setEmailId(''); // Correct usage
+            setPhoneNo(''); // Correct usage
             setRole('');
             setSalary('');
             setAddress('');
@@ -66,7 +66,6 @@ const AddEmployee = () => {
                         required
                     />
                 </div>
-
                 <div className="form-group">
                     <label>Role</label>
                     <input
@@ -78,26 +77,25 @@ const AddEmployee = () => {
                     />
                 </div>
                 <div className="form-group">
-                                    <label>emailId</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        value={emailId}
-                                        onChange={(e) => setemailId(e.target.value)}
-                                        required
-                                    />
-                                </div>
-                                <div className="form-group">
-                                <label>phone No</label>
-                                      <input
-
-                                                        type="text"
-                                                        className="form-control"
-                                                        value={phoneNo}
-                                                        onChange={(e) => setphoneNo(e.target.value)}
-                                                        required
-                                                    />
-                                                </div>
+                    <label>Email ID</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        value={emailId}
+                        onChange={(e) => setEmailId(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Phone No</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        value={phoneNo}
+                        onChange={(e) => setPhoneNo(e.target.value)}
+                        required
+                    />
+                </div>
                 <div className="form-group">
                     <label>Salary</label>
                     <input

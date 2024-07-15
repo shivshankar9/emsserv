@@ -1,32 +1,50 @@
-// src/components/RegisterPage.js
-import React from 'react';
-import { signInWithGoogle } from '../firebaseConfig';
-import './AuthPage.css';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import './LandingPage.css'; // Reusing the landing page styles
 
 const RegisterPage = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
+    const handleRegister = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post('/register', { email, password });
+            navigate('/login');
+        } catch (error) {
+            console.error('Registration failed:', error);
+        }
+    };
+
     return (
-        <div className="auth-page">
-            <div className="auth-header">
-                <h1>Register</h1>
-                <p>Manage your workforce efficiently with our intuitive tools.</p>
+        <div className="landing-page">
+            <div className="landing-header">
+                <h2>Create an Account</h2>
+                <p>Join our Employee Management System</p>
             </div>
-            <div className="auth-buttons">
-                <button onClick={signInWithGoogle} className="google-btn">Sign in with Google</button>
+            <form className="landing-form" onSubmit={handleRegister}>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+                <button className="btn" type="submit">Register</button>
+            </form>
+            <div className="alternative-option">
+                <p>Already have an account? <span className="link" onClick={() => navigate('/login')}>Login</span></p>
             </div>
-            <div className="auth-form">
-                <input type="text" placeholder="Full Name" />
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-                <button className="btn">Register</button>
-            </div>
-            <div className="auth-toggle">
-                <p><a href="/login">Already have an account? Login</a></p>
-            </div>
-            <div className="animation">
-                <div className="circle"></div>
-                <div className="circle delay"></div>
-                <div className="circle delay-2"></div>
-            </div>
+
         </div>
     );
 };
