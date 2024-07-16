@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import EmployeeService from './EmployeeService';
 import ViewProfile from './ViewProfile';
+import { signInWithGoogle } from '../firebaseConfig';
+
 
 const EmployeeList = () => {
     const [employees, setEmployees] = useState([]);

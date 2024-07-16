@@ -1,0 +1,9 @@
+.view-leave-requests {
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.view-leave-requests ul {
+    list-style-type: none;
+    padding: 0;
+}

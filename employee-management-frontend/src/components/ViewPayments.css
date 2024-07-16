@@ -1,0 +1,15 @@
+.view-payments {
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.payments-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.payments-table th, .payments-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}

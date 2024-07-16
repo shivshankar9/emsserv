@@ -1,7 +1,9 @@
+// src/components/RegisterPage.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './LandingPage.css'; // Reusing the landing page styles
+import { signInWithGoogle } from '../firebaseConfig';
 
 const RegisterPage = () => {
     const [email, setEmail] = useState('');
@@ -16,6 +18,10 @@ const RegisterPage = () => {
         } catch (error) {
             console.error('Registration failed:', error);
         }
+    };
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle(navigate);
     };
 
     return (
@@ -42,9 +48,9 @@ const RegisterPage = () => {
                 <button className="btn" type="submit">Register</button>
             </form>
             <div className="alternative-option">
+                <button onClick={handleGoogleSignIn} className="google-btn">Sign in with Google</button>
                 <p>Already have an account? <span className="link" onClick={() => navigate('/login')}>Login</span></p>
             </div>
-
         </div>
     );
 };

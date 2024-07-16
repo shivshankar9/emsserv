@@ -74,19 +74,19 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### dummy data to add employee sql
  ### -- Inserting dummy data for 10 employees into the Employee table
-` INSERT INTO employee (first_name, last_name, role, salary, address)
+` INSERT INTO railway.employee (first_name, last_name, phone_no, role, salary, address, email_id)
 VALUES
-('John', 'Doe', 'Manager', 50000, '123 Main St, Anytown'),
-('Jane', 'Smith', 'Developer', 60000, '456 Elm St, Othertown'),
-('Michael', 'Johnson', 'Sales Representative', 45000, '789 Oak St, Anycity'),
-('Emily', 'Brown', 'HR Specialist', 55000, '567 Pine St, Otherville'),
-('David', 'Wilson', 'Software Engineer', 70000, '890 Maple St, Somewhere'),
-('Sarah', 'Martinez', 'Accountant', 60000, '234 Birch St, Anywhere'),
-('Daniel', 'Garcia', 'Marketing Manager', 65000, '321 Cedar St, Nowhere'),
-('Jessica', 'Lopez', 'Data Analyst', 60000, '876 Willow St, Someplace'),
-('James', 'Miller', 'Operations Manager', 75000, '543 Spruce St, Elsewhere'),
-('Olivia', 'Gonzalez', 'Customer Support Specialist', 50000, '987 Pineapple St, Anothercity');
- `
+('John', 'Doe', '123-456-7890', 'Manager', 50000, '123 Main St, Anytown', 'john.doe@example.com'),
+('Jane', 'Smith', '234-567-8901', 'Developer', 60000, '456 Elm St, Othertown', 'jane.smith@example.com'),
+('Michael', 'Johnson', '345-678-9012', 'Sales Representative', 45000, '789 Oak St, Anycity', 'michael.johnson@example.com'),
+('Emily', 'Brown', '456-789-0123', 'HR Specialist', 55000, '567 Pine St, Otherville', 'emily.brown@example.com'),
+('David', 'Wilson', '567-890-1234', 'Software Engineer', 70000, '890 Maple St, Somewhere', 'david.wilson@example.com'),
+('Sarah', 'Martinez', '678-901-2345', 'Accountant', 60000, '234 Birch St, Anywhere', 'sarah.martinez@example.com'),
+('Daniel', 'Garcia', '789-012-3456', 'Marketing Manager', 65000, '321 Cedar St, Nowhere', 'daniel.garcia@example.com'),
+('Jessica', 'Lopez', '890-123-4567', 'Data Analyst', 60000, '876 Willow St, Someplace', 'jessica.lopez@example.com'),
+('James', 'Miller', '901-234-5678', 'Operations Manager', 75000, '543 Spruce St, Elsewhere', 'james.miller@example.com'),
+('Olivia', 'Gonzalez', '012-345-6789', 'Customer Support Specialist', 50000, '987 Pineapple St, Anothercity', 'olivia.gonzalez@example.com');
+`
 ### working add employee page em data fields 
 ` {
 "id": 14,

@@ -1,0 +1,21 @@
+/* src/components/Footer.css */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Slightly transparent background */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    animation: fadeIn 2s ease-in-out;
+    font-size: 0.9em;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
