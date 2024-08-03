@@ -10,8 +10,11 @@ public class WebConfig implements WebMvcConfigurer {
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**")
-				//.allowedOrigins("http://localhost:3000")
-				.allowedOrigins("https://emsportal.netlify.app")
+				.allowedOrigins("http://localhost:3000")
+				//.allowedOrigins("https://emsportal.netlify.app")
+				//.allowedOrigins("https://emsserv-production.up.railway.app")
+
+
 				.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
 				.allowedHeaders("*")
 				.allowCredentials(true);

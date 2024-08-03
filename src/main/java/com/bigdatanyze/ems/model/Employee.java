@@ -2,69 +2,36 @@ package com.bigdatanyze.ems.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 @Entity
+@Table(name = "employee")
 public class Employee {
-    // Getters and Setters
     @Id
-    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false) // firstName cannot be null
+    @Column(nullable = false)
     private String firstName;
 
-    @Column(nullable = false) // lastName cannot be null
+    @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false) // role cannot be null
+    @Column(nullable = false)
     private String phoneNo;
 
-
-
-    @Column(nullable = false) // role cannot be null
+    @Column(nullable = false)
     private String emailId;
 
+    @ManyToOne
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
 
-    @Column(nullable = false) // role cannot be null
-    private String role;
-
-    @Column(nullable = false) // salary cannot be null
+    @Column(nullable = false)
     private Long salary;
 
-    @Column(nullable = false) // address cannot be null
+    @Column(nullable = false)
     private String address;
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public void setSalary(Long salary) {
-        this.salary = salary;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setPhoneNo(String phoneNo) {
-        this.phoneNo = phoneNo;
-    }
-
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
-    }
 }

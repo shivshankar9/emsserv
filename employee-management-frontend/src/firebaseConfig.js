@@ -1,6 +1,8 @@
 // src/firebaseConfig.js
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { setCookie } from './cookieUtils'; // Import your cookie utility functions
+import EmployeeService from './components/EmployeeService'; // Import the service to fetch employee data
 
 // Firebase configuration object
 const firebaseConfig = {
@@ -31,6 +33,13 @@ const signInWithGoogle = async (navigate) => {
         const result = await signInWithPopup(auth, provider);
         const email = result.user.email;
         console.log(result.user); // Log user information
+
+        // Fetch employee data based on the email
+        const employeeResponse = await EmployeeService.getEmployeeByEmail(email);
+        const employee = employeeResponse.data;
+
+        // Set a cookie with the employee ID
+        setCookie('employeeId', employee.id, { path: '/' });
 
         // Check email and navigate accordingly
         if (email === 'shivshankar4287@gmail.com') {
